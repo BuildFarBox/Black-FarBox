@@ -33,13 +33,14 @@ html
 							a.next(href=pager.next_url) Next
 			#search_bar
 				input#search_value(placeholder="Search", type="text", value="{{ request.args.s }}", onkeyup="if (event.keyCode == 13) search();")
-
-		script(type="text/javascript")
-			function search(){
-				if (document.getElementById('search_value').value){ location.href='http://'+location.host+'?s='+document.getElementById('search_value').value}
-				else{ return false;}
-			}
-			window.onload = function(){ window.scroll(0, 0); }
-
+				script(type="text/javascript")
+					function search(){
+						if (document.getElementById('search_value').value){ location.href='http://'+location.host+'?s='+document.getElementById('search_value').value}
+						else{ return false;}
+					}
+					window.onload = function(){ window.scroll(0, 0); }
+		#footer
+			a(href="http://www.farbox.com") Powered by FarBox
+			a(href="https://github.com/BuildFarBox/Black-FarBox/tree/master/we.farbox.com") Codes
 
 

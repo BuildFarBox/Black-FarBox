@@ -7,6 +7,20 @@ body{
     word-wrap: break-word;
     width: 80%;
     margin: 50px auto;
+
+    #footer{
+        margin-top: 80px;
+        font-size: 10px;
+        text-align: center;
+
+        a{
+            color: #999;
+            margin: 0 15px;
+            &:hover{
+                color: indianred;
+            }
+        }
+    }
 }
 
 ul, li {
@@ -77,7 +91,7 @@ a{
         #comments{
             form{
                 textarea{
-                    height: 200px;
+                    height: 150px;
                 }
             }
         }
@@ -195,6 +209,7 @@ a{
     }
 
     .post_main{
+        margin: 35px 0;
         line-height: 2.1;
 
         a{

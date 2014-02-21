@@ -17,7 +17,8 @@ html
 									.avatar
 										img(src="/service/static_3rd/avatar/{{post.metadata.email_md5}}")
 						.post_main
-							.content= post.content.editable
+							//.content= post.content.editable
+							.content= post.content
 						.post_info
 							+get_category(post)
 							if post.metadata.author_name
@@ -28,6 +29,9 @@ html
 
 					#comments
 						include include/comments
+		#footer
+			a(href="http://www.farbox.com") Powered by FarBox
+			a(href="https://github.com/BuildFarBox/Black-FarBox/tree/master/we.farbox.com") Codes
 
 
 
