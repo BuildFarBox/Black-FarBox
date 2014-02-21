@@ -3,7 +3,7 @@ html
 		load('pure#0.4.2 /template/style/main.scss')
 		title= category.title or site.title
 	body
-		{% from "macros" import menu %}
+		{% from "macros" import menu, get_category  %}
 		#layout.pure-g
 			.pure-u-3-24
 				+menu()
@@ -24,6 +24,7 @@ html
 										img(src="/service/static_3rd/avatar/{{post.metadata.email_md5}}")
 								a(href=post.url)= post.title
 								span.date= post.date
+								+get_category(post)
 
 					#pager
 						pager = get_pager('topics')

@@ -180,6 +180,20 @@ a{
             margin: 0 10px;
         }
 
+        a.category{
+            font-size: 10px;
+            padding: 2px 3px;
+            background: #f7f7f7;
+            margin-left: 5px;
+            color: #555;
+            border-radius: 3px;
+            &:hover{
+                color: indianred;
+                border: none;
+                background: #eee;
+            }
+        }
+
     }
 }
 
