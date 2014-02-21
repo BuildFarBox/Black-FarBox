@@ -1,0 +1,29 @@
+need_admin()
++make_site_live()
+head
+	title {{site.title}} . Admin
+	load('fonts jquery knockout /template/js/to-markdown.js /template/js/todo.js /template/css/todo.css')
+body
+	#controls
+		.cmds
+			a#manger(href="/", target="_blank")
+				i.fa.fa-cloud Site
+			a(data-bind="click: create_post", href="#")
+				i.fa.fa-plus New Todo
+
+		ul#posts.posts(data-bind="foreach: posts")
+			li
+				a(data-bind="click: edit", href="#")
+					span(data-bind="text: title")
+					span.remove(data-bind="click: remove") x
+
+	.todo_container
+		h1.title(data-bind="text: current_post().title")
+		section.todo-list
+			input#new-todo(placeholder="What needs to be done?", autofocus="")
+			.todo-html
+
+	script(type="text/javascript")
+		var no_reload_for_posts = true;
+		run_editor();
+

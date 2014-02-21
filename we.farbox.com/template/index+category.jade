@@ -1,0 +1,45 @@
+html
+	head
+		load('pure#0.4.2 /template/style/main.scss')
+		title= category.title or site.title
+	body
+		{% from "macros" import menu %}
+		#layout.pure-g
+			.pure-u-3-24
+				+menu()
+
+			.pure-u-21-24
+				#contents
+					ul.topics
+						+set_per_page(10)
+						if category
+							posts = get_data(type='post', path=category.path, sort='-m_date', pager_name='topics')
+						else
+							posts = get_data(type='post', path='share', sort='-m_date', pager_name='topics', keywords=request.args.s)
+
+						for post in posts
+							li.topic
+								if post.metadata.email_md5
+									.avatar
+										img(src="/service/static_3rd/avatar/{{post.metadata.email_md5}}")
+								a(href=post.url)= post.title
+								span.date= post.date
+
+					#pager
+						pager = get_pager('topics')
+						if pager.has_pre
+							a.pre(href=pager.pre_url) Pre
+						if pager.has_next
+							a.next(href=pager.next_url) Next
+			#search_bar
+				input#search_value(placeholder="Search", type="text", value="{{ request.args.s }}", onkeyup="if (event.keyCode == 13) search();")
+
+		script(type="text/javascript")
+			function search(){
+				if (document.getElementById('search_value').value){ location.href='http://'+location.host+'?s='+document.getElementById('search_value').value}
+				else{ return false;}
+			}
+			window.onload = function(){ window.scroll(0, 0); }
+
+
+

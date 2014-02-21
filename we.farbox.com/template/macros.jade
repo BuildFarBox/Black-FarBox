@@ -1,0 +1,22 @@
+
+mixin menu()
+	ul#menu
+		li
+			a_with_selected('/', 'Home')
+		for folder in get_data(type='folder', path='share', level=1, sort='position', with_page=False)
+			li
+				a_with_selected("/category/"+folder.path, folder.title)
+		li
+			a_with_selected('/new', '+New')
+
+mixin get_category(post)
+	folders = get_data(type='folder', path='share', level=1, sort='position', with_page=False)
+	for folder in folders
+		if post.path.startswith(folder.path+'/')
+			a.category(href="/category/"+folder.path)= folder.title
+
+
+mixin category_select()
+	select(name="category")
+		for folder in get_data(type='folder', path='share', level=1, sort='position')
+			option(value=folder.path)= folder.title

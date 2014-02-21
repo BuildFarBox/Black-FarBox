@@ -1,0 +1,33 @@
+html
+	need_login()
+	doc = get_doc(get_request_path(offset=1))
+	if account_id != doc.metadata.account_id
+		doc = None
+	head
+		load('pure#0.4.2 /template/style/main.scss jquery /template/new.js')
+		if doc
+			title Edit Topic
+		else
+			title New Topic
+	body
+		{% from "macros" import menu, category_select %}
+		#layout.pure-g
+			.pure-u-3-24
+				+menu()
+			.pure-u-21-24
+				#contents
+					form.pure-form.pure-form-stacked(action="/service/gateway/sync", method="POST")
+						input#title(name="title", placeholder="Title", value=doc.title)
+						if not doc
+							+category_select()
+						textarea(name="raw_content", placeholder="Content")= doc.raw_content
+						a.pure-button.pure-button-primary Submit
+						span.ajax_info
+						if doc
+							input#path(type="hidden", value=doc.path)
+		script(type="text/javascript")
+			var no_reload_for_posts = true;
+			var visitor_account_id = '{{ account_id }}';
+			var email_md5 = '{{ account.email_md5 }}';
+			var author_name = '{{ account.name }}';
+

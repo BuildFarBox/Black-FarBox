@@ -1,0 +1,34 @@
+html
+	head
+		load('pure#0.4.2 /template/style/main.scss')
+		title= post.title
+	body
+		{% from "macros" import menu, get_category %}
+		#layout.pure-g
+			.pure-u-3-24
+				+menu()
+
+			.pure-u-21-24
+				#contents
+					.post
+						.post_head
+							h1.title= post.title
+							if post.metadata.email_md5
+									.avatar
+										img(src="/service/static_3rd/avatar/{{post.metadata.email_md5}}")
+						.post_main
+							.content= post.content.editable
+						.post_info
+							+get_category(post)
+							if post.metadata.author_name
+								span.author= post.metadata.author_name
+							span.date= post.date
+							if account_id and post.metadata.account_id==account_id
+								a.edit(href="/new/{{post.path}}") Edit
+
+					#comments
+						include include/comments
+
+
+
+

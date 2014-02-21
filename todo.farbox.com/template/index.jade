@@ -1,0 +1,14 @@
+head
+	title= site.title
+	load('/template/css/todo.css /template/css/blog.css')
+body
+	for post in posts
+		.post
+			h2= post.title
+			section.todo-list= post.content
+	.pager
+		if pager.has_pre
+			a.pre(href=pager.pre_url) <
+		if pager.has_next
+			a.next(href=pager.next_url) <
+		.clear
