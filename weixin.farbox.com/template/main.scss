@@ -1,0 +1,79 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: #4e362c;
+    font:  400 16px/1.62 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    line-height: 1.9;
+
+    h1, h2, h3{
+        font-family: 'PT Serif', "Georgia", "Times New Roman", Times,"Songti SC","SimSun", sans-serif;
+    }
+
+
+}
+
+
+
+.pager{
+
+    a{
+
+        text-decoration: none;
+        font-size: 5em;
+        font-family: Georgia, "Times New Roman", arial, sans-serif;
+        color: #eee;
+        opacity: 0.5;
+
+        &:hover{
+            color: #f0f0f0;
+            opacity: 1;
+        }
+    }
+
+    .p_url{
+        position: absolute;
+            top: 35%;
+    }
+    .pre{
+        left: 0;
+
+    }
+    .next{
+        right: 0;
+
+    }
+    }
+
+#body_wrapper{
+    position: absolute;
+    height: 100%;
+    left: 10%;
+    top: 0;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+
+
+
+    #main{
+        height: 90%;
+        margin-top: 3.5%;
+        padding: 0;
+        background: #fff;
+        border-radius: 5px;
+        overflow: auto;
+    }
+
+    .post{
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+
+    }
+
+}

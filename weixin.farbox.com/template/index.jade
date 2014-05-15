@@ -1,0 +1,36 @@
+if request.args.path
+	+set_content_type("application/json")
+	post = get_doc(request.args.path)
+	if post
+		post.json
+	else
+		{'error':404}.json
+	{# 本处只为demo，实际上不要把两个完全不同的功能写到同一个页面，容易出错。#}
+
+else
+	html
+		head
+			meta(name="renderer", content="webkit")
+			title= site.title
+			load('/template/main.scss jquery knockout /template/intime.coffee')
+		body
+			+set_no_inject()
+			#body_wrapper
+				#main
+					posts = get_data(type='post', limit=1, pager_name='posts')
+					.posts(data-bind="foreach:posts")
+						.post
+							h2(data-bind="text: title")
+							.content(data-bind="html: content")
+
+			paginator = get_pager('posts')
+			if paginator.has_pre or paginator.has_next
+				.pager
+					if paginator.has_pre
+						a.p_url.pre(href=paginator.pre_url) <
+					if paginator.has_next
+						a.p_url.next(href=paginator.next_url) >
+			script
+				render_page({{posts.json}})
+
+
